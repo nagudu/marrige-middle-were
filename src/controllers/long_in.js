@@ -15,9 +15,8 @@ export const long_in = (req, res) => {
     db.sequelize
         .query(`SELECT * FROM users WHERE email="${email}" and password="${password}"`)
         .then((results) => {
-            console.log(results)
             if(results[0].length){
-                res.json({ loggedIn: true })
+                res.json({ loggedIn: true, user: results[0] })
             } else {
                 res.json({ loggedIn: false, message: "Email or password is not correct" })
             }
@@ -25,4 +24,22 @@ export const long_in = (req, res) => {
         .catch((err) => {
             console.log(err)
             res.json({ err, success: false })})
+}; 
+
+export const getUserInfo = (req, res) => {
+    const { user_id } = req.params
+
+    db.sequelize
+        .query(`SELECT * FROM users WHERE id="${user_id}" `)
+        .then((results) => {
+            if(results[0].length){
+                res.json({ success:true, user: results[0] })
+            } else {
+                res.json({ success:false, message: "Email not found" })
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+            res.json({ err, success: false })
+        })
 }; 

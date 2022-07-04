@@ -42,6 +42,8 @@ app.get('/', (req, res) => res.send('Hello my World'));
 // require("./routes/messge_send")(app);
 // require("./routes/regester")(app);
 require("./routes/long_in")(app);
+require("./routes/edit_pro_file")(app);
+
 
 
 //create a server
