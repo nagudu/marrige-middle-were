@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-let port = process.env.PORT || 34567;
+let port = process.env.PORT || 34569;
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -34,16 +34,8 @@ require('./config/passport')(passport);
 //default route
 app.get('/', (req, res) => res.send('Hello my World'));
 
-// require('./routes/user.js')(app);
-// require('./routes/policyClass.js')(app);
-// require("./routes/contact")(app);
-// require("./routes/feedback")(app);
-// require("./routes/appointment_details")(app);
-// require("./routes/messge_send")(app);
-// require("./routes/regester")(app);
-require("./routes/long_in")(app);
-require("./routes/edit_pro_file")(app);
-
+// 
+require("./routes/mentorship")(app);
 
 
 //create a server
